@@ -1,0 +1,33 @@
+<p id="notice"></p>
+<br>
+<% if @book.errors.any? %>
+    <div id="error_explanation" class="alert">
+        <h2><%= @book.errors.count %>errors prohibited obj from being saved:</h2>
+            <ul>
+            <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+            </ul>
+    </div>
+<% end %>
+
+
+
+
+<table class="table">
+	<tr><%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %></tr>
+
+	<tr>
+		<th>name</th>
+		<th><%= user.name %></th>
+	</tr>
+
+	<tr>
+		<th>introduction</th>
+		<th><%= user.introduction %></th>
+	</tr>
+</table>
+
+<div class="row">
+	<%= link_to '', edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{user.id}" %>
+</div>

@@ -5,9 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
   attachment :profile_image, destroy: false
+  has_many :favorites, dependent: :destroy
 
-  #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
+  #バリデーションは該当するモデルに設定:する。エラーにする条件を設定できる。
   validates :name, presence: true, length: {maximum: 20, minimum: 2}
   validates :introduction,length: { maximum: 50}
 end
